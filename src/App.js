@@ -7,9 +7,12 @@ import Care from "./Assets/care.svg";
 import Like from "./Assets/like.svg";
 import Love from "./Assets/love.svg";
 import Sad from "./Assets/sad.svg";
+import Shiv from "./Assets/shiv.png";
+
 import { useSpring, animated, useTransition } from "react-spring";
 import { Keyframes } from "react-spring/renderprops";
 import * as easings from "d3-ease";
+import Avatar from "./Components/Avatar";
 
 const App = () => {
     const [selectedEmotion, setSelectedEmotion] = useState(null);
@@ -17,7 +20,7 @@ const App = () => {
 
     const springProps = useSpring({
         opacity: selectedEmotion ? 1 : 0,
-        height: selectedEmotion ? 300 : 0,
+        height: selectedEmotion ? 240 : 0,
         config: {
             easing: easings.easeCubicInOut,
         },
@@ -45,31 +48,47 @@ const App = () => {
                             style={{ ...springProps }}
                             alt="Hello"
                         ></animated.img>
-                        <h1>{selectedEmotion.label}</h1>
+                        <h1 style={{ color: "white" }}>
+                            {selectedEmotion.label}
+                        </h1>
                     </div>
                 ) : (
                     <h1 style={{ margin: 0 }}>Please Select an Emotion</h1>
                 )}
-                <div style={{ textAlign: "left", display: "inline-block" }}>
-                    <ToolTip
-                        ref={container}
-                        title="Hello World"
-                        chooseEmotion={(data) => setSelectedEmotion(data)}
-                    />
-                    <div
-                        id="tooltipContainer"
-                        style={{ display: "inline-block" }}
-                    >
+                {!selectedEmotion ? (
+                    <div style={{ textAlign: "left", display: "inline-block" }}>
+                        <ToolTip
+                            ref={container}
+                            title="Hello World"
+                            chooseEmotion={(data) => {
+                                setSelectedEmotion(data);
+                            }}
+                        />
                         <div
-                            id="tooltip"
-                            onMouseOver={() => container.current.open()}
-                            onMouseLeave={() => container.current.close()}
+                            id="tooltipContainer"
+                            style={{ display: "inline-block" }}
                         >
-                            <button className="buttonItem">
-                                Hover Over Me
-                            </button>
+                            <div
+                                id="tooltip"
+                                onMouseOver={() => container.current.open()}
+                                onMouseLeave={() => container.current.close()}
+                            >
+                                <button className="buttonItem">
+                                    Hover Over Me
+                                </button>
+                            </div>
                         </div>
                     </div>
+                ) : (
+                    <button
+                        className="buttonItem"
+                        onClick={() => setSelectedEmotion(null)}
+                    >
+                        Close
+                    </button>
+                )}
+                <div style={{ position: "absolute", bottom: 30, right: 80 }}>
+                    <Avatar icon={Shiv} />
                 </div>
             </div>
         </div>

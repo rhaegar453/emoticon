@@ -1,0 +1,24 @@
+.image {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.imageContainer {
+    display: inline-block;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.text1 {
+    margin: 0px;
+    font-weight: bold;
+}
+
+.text2 {
+    margin: 0px;
+}
