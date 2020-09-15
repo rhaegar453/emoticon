@@ -28,31 +28,48 @@ const App = () => {
     });
 
     return (
-        <div>
-            {selectedEmotion ? (
-                <div style={springProps}>
-                    <animated.img
-                        src={selectedEmotion.icon}
-                        style={{ ...springProps }}
-                        alt="Hello"
-                    ></animated.img>
-                    <h1>{selectedEmotion.label}</h1>
-                </div>
-            ) : (
-                <h1 style={springProps}>Please Select an Emotion</h1>
-            )}
-            <ToolTip
-                ref={container}
-                title="Hello World"
-                chooseEmotion={(data) => setSelectedEmotion(data)}
-            />
-            <div id="tooltipContainer" style={{ display: "inline-block" }}>
-                <div
-                    id="tooltip"
-                    onMouseOver={() => container.current.open()}
-                    onMouseLeave={() => container.current.close()}
-                >
-                    <button className="buttonItem">Hover Over Me</button>
+        <div
+            className="appBackground"
+            style={{
+                width: "100%",
+                height: "100vh",
+                textAlign: "center",
+                marginTop: 30,
+            }}
+        >
+            <div>
+                {selectedEmotion ? (
+                    <div style={springProps}>
+                        <animated.img
+                            src={selectedEmotion.icon}
+                            style={{ ...springProps }}
+                            alt="Hello"
+                        ></animated.img>
+                        <h1>{selectedEmotion.label}</h1>
+                    </div>
+                ) : (
+                    <h1 style={{ margin: 0 }}>Please Select an Emotion</h1>
+                )}
+                <div style={{ textAlign: "left", display: "inline-block" }}>
+                    <ToolTip
+                        ref={container}
+                        title="Hello World"
+                        chooseEmotion={(data) => setSelectedEmotion(data)}
+                    />
+                    <div
+                        id="tooltipContainer"
+                        style={{ display: "inline-block" }}
+                    >
+                        <div
+                            id="tooltip"
+                            onMouseOver={() => container.current.open()}
+                            onMouseLeave={() => container.current.close()}
+                        >
+                            <button className="buttonItem">
+                                Hover Over Me
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

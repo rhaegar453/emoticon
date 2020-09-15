@@ -12,3 +12,7 @@
 .buttonItem:hover {
     transition: 0.3s;
 }
+
+body {
+    background: linear-gradient(110.96deg, #36d1dc 1.58%, #5b86e5 94.94%);
+}
