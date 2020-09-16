@@ -14,7 +14,7 @@ const Avatar = ({ icon }) => {
     });
 
     const pProps = useSpring({
-        fontSize: expand ? 14 : 0,
+        fontSize: expand ? 16 : 0,
         opacity: expand ? 1 : 0,
     });
 

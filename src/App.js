@@ -53,7 +53,9 @@ const App = () => {
                         </h1>
                     </div>
                 ) : (
-                    <h1 style={{ margin: 0 }}>Please Select an Emotion</h1>
+                    <h1 style={{ margin: 0, color: "white", margin: 20 }}>
+                        Please Select an Emotion
+                    </h1>
                 )}
                 {!selectedEmotion ? (
                     <div style={{ textAlign: "left", display: "inline-block" }}>
